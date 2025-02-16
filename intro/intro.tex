@@ -1,0 +1,286 @@
+\documentclass[t]{beamer}
+\usepackage{graphicx}
+\usepackage{hyperref} % hypertext link
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % bibliography, install biber otherwise it will not work
+\addbibresource{intro.bib} % bibliography file name *.bib
+
+
+% set the theme
+\usetheme{Boadilla}
+\usefonttheme{professionalfonts}
+\setbeamerfont{section in toc}{size=\normalsize}
+\setbeamerfont{subsection in toc}{size=\small}
+\setbeamerfont{section number projected}{size=\small}
+\setbeamerfont{subsection number projected}{size=\small}
+\setbeamerfont{footnote}{size=\tiny}
+
+
+% show the table of contents before each subsection
+% and highlight the current subsection
+%
+\AtBeginSubsection[]{
+  \begin{frame}
+    \frametitle{Overview}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame}
+}
+
+
+% only show the table of contents before each section
+% and highlight the current section
+%
+% \AtBeginSection[]{
+%   \begin{frame}
+%     \frametitle{Overview}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
+
+
+\begin{document}
+
+    \author{Vincent Chan}
+    \title{CSE331 Proof Walkthrough}
+    \date{\today}
+
+
+    % show the title page
+    %
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+
+    % show the table of contents
+    % \section{Course Overview}
+    %
+    % \section{Proofs}
+    % \subsection{Why proofs?}
+    % \subsection{Proof Idea \& Proof Detail}
+    %
+    % \section{Proof Techniques}
+    % \subsection{Proof by Induction}
+    % \subsection{Proof by Contradiction}
+    % \subsection{Reduction}
+    % \subsection{Proof by Counterexample}
+    %
+    % \section{Asymptotic Analysis}
+    % \subsection{Big-O Notation}
+    % \subsection{Big-$\Omega$ Notation}
+    % \subsection{Big-$\Theta$ Notation}
+    
+
+    \begin{frame}
+        \frametitle{Overview}
+        \tableofcontents
+    \end{frame}
+
+
+    %%%%%%%%%%%%%%%%%%%%% BEGIN CONTENT %%%%%%%%%%%%%%%%%%%%%
+
+    \section{Course Overview}
+        \begin{frame}
+            \frametitle{Course Overview}
+            \begin{block}{\href{https://www-student.cse.buffalo.edu/~atri/cse331/fall24/policies/syllabus.html}{Course Website}}
+                \begin{itemize}
+                    \item Recitation notes for weekly homework.
+                    \item Background Material
+                    \item More resources
+                \end{itemize}
+            \end{block}
+        \end{frame}
+
+    \section{Proofs}
+        \subsection{Why Proofs?}
+            \begin{frame}
+                \frametitle{Why Proofs?}
+            \end{frame}
+
+        \subsection{Proof Idea \& Proof Detail}
+            \begin{frame}
+                \frametitle{Proof Idea \& Proof Details}
+                \begin{block}{Proof Idea}
+                    The high-level idea of the proof.(English)
+                \end{block}
+
+                \begin{block}{Proof Details}
+                    The detailed steps of the proof. (Pseudocode, etc.)
+                \end{block}
+            \end{frame}
+
+    \section{Proof Techniques}
+        \subsection{Proof by Induction}
+            \begin{frame}
+                \frametitle{Proof by Induction}
+                \begin{block}{Principle of Mathematical Induction}
+                    To prove that a statement $P(n)$ is true for all positive integers $n$, we need to show:
+                    \begin{enumerate}
+                        \item<1-> Base case: $P(1)$ is true.
+                        \item<2-> Inductive step: If $P(k)$ is true, then $P(k+1)$ is true.
+                    \end{enumerate}
+                \end{block}
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{Proof by Induction}
+                \begin{block}{Example}
+                    Prove that $\sum_{i = 1}^{n} i = \frac{n(n+1)}{2}\ \forall n \in \mathbb{N}$.
+                \end{block}
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{Proof by Induction}
+                \begin{block}{Base case}
+                    $P(1)$ is true because $1 = \frac{1(1+1)}{2}$.
+                \end{block}
+
+                \begin{block}{Inductive hypothesis}
+                    Assume $P(k)$ is true, i.e., $\sum_{i = 1}^{k} i = \frac{k(k+1)}{2}$.
+                \end{block}
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{Proof by Induction}
+                \begin{block} {Inductive step}
+                    We need to show that $P(k+1)$ is true, i.e., $\sum_{i = 1}^{k+1} i = \frac{(k+1)(k+2)}{2}$.
+
+                    \bigskip
+                    Base on the inductive hypothesis, we have:
+                    \[\sum _{i = 1}^{k+1} i = \sum _{i = 1}^{k} i + (k+1) = \frac{k(k+1)}{2} + (k+1) = \frac{(k+1)(k+2)}{2}\]
+
+                    \bigskip
+                    Therefore, $P(k+1)$ is true. We proof by induction that $\sum_{i = 1}^{n} i = \frac{n(n+1)}{2}\ \forall n \in \mathbb{N}$.
+                \end{block}
+            \end{frame}
+
+            \subsection{Proof by Contradiction}
+                \begin{frame}
+                    \frametitle{Proof by Contradiction}
+                    Assume the statement is false, then derive a contradiction.
+                \end{frame}
+
+                \begin{frame}
+                    \frametitle{Proof by Contradiction: Pigeonhole Principle}
+                    \begin{block}{Pigeonhole Principle}
+                        If $n+1$ pigeons are placed into $n$ pigeonholes, then at least one pigeonhole contains 2 pigeons.
+                    \end{block}
+                \end{frame}
+
+            \begin{frame}
+                \frametitle{Proof by Contradiction: Pigeonhole Principle \footfullcite{pigeonhole}}
+                \begin{block}{Proof}
+                    Assume that no pigeonhole contains 2 pigeons.
+
+                    \bigskip
+                    For notational convenience, let $h_i$ denote the number of pigeons in the $i$-th hole for every $i \in [n]$. For the sake of contradiction, 
+                    let us assume that $h_i \leq 1$ for every $i \in [n]$. Now since each pigeon is assigned to some hole, 
+                    the total number of pigeons is \[\sum_{i=1}^{n} h_i \leq \sum_{i=1}^{n} 1 = n\], where the inequality follows from our assumption that $h_i \leq 1$ for every $i \in [n]$. 
+                    This implies that the total number of pigeons is at most $n$, which is a contradiction since there are $n+1$ pigeons. 
+                    This implies that there exists at least one $i \in [n]$ s.t. $h_i \geq 2$, as desired.
+                \end{block}
+            \end{frame}
+
+        \subsection{Reduction}
+            \begin{frame}
+                \frametitle{Reduction}
+                To prove that problem $A$ can be solved by solving problem $B$, we reduce $B$ to $A$.
+
+                \begin{block}{Example}
+                    Example \cdot
+                \end{block}
+            \end{frame}
+
+
+        \subsection{Proof by Counterexample}
+            \begin{frame}
+                \frametitle{Proof by Counterexample}
+                To prove that a statement is false, provide a counterexample. Useful when dealing 
+                with universal quantifiers (e.g., $\forall$).
+            \end{frame}
+
+            \begin{frame}
+                \frametitle{Proof by Counterexample}
+                \begin{block}{Example}
+                    Prove that the statement ``There are no even prime numbers'' is false.
+                \end{block}
+                \begin{block}{Proof}
+                    2 is an even prime number.
+                \end{block}
+            \end{frame}
+
+    \section{Asymptotic Analysis}
+
+
+        \subsection{Big-O Notation}
+            \begin{frame}
+                \frametitle{Big-O Notation}
+                \begin{block}{Definition}
+                    $f(n) = O(g(n))$ if $\exists c > 0$ and $n_0 > 0$ s.t. \[0 \leq f(n) \leq c \cdot g(n)\ \forall n \geq n_0\].
+                \end{block}
+
+                \begin{block}{Example}
+                    $3n^2 + 5n + 7 = O(n^2)$.
+                \end{block}
+            \end{frame}
+
+        \subsection{Big-$\Omega$ Notation}
+            \begin{frame}
+                \frametitle{Big-$\Omega$ Notation}
+                \begin{block}{Definition}
+                    $f(n) = \Omega(g(n))$ if $\exists c > 0$ and $n_0 > 0$ s.t. \[0 \leq c \cdot g(n) \leq f(n)\ \forall n \geq n_0\].
+                \end{block}
+
+                \begin{block}{Example}
+                    $3n^2 + 5n + 7 = \Omega(n^2)$.
+                \end{block}
+            \end{frame}
+
+        \subsection{Big-$\Theta$ Notation}
+            \begin{frame}
+                \frametitle{Big-$\Theta$ Notation}
+                \begin{block}{Definition}
+                    $f(n) = \Theta(g(n))$ if $\exists c_1 > 0$, $c_2 > 0$, and $n_0 > 0$ s.t. 
+                    \[0 \leq c_1 \cdot g(n) \leq f(n) \leq c_2 \cdot g(n)\ \forall n \geq n_0\].
+                \end{block}
+
+                \begin{block}{Example}
+                    $3n^2 + 5n + 7 = \Theta(n^2)$.
+                \end{block}
+            \end{frame}
+
+
+    \section{Proof Idea \& Proof Detail}
+
+
+        \begin{frame}
+            \frametitle{Proof Idea \& Proof Details}
+            \begin{block}{Proof Idea}
+                The high-level idea of the proof.
+            \end{block}
+
+            \begin{block}{Proof Details}
+                The detailed steps of the proof.
+            \end{block}
+        \end{frame}
+
+
+    \begin{frame}
+        \frametitle{Any Questions?}
+        Post your questions on Piazza!
+
+        \bigskip
+        Also, try to come to office hours and ask questions.
+    \end{frame}
+
+
+    %%%%%%%%%%%%%%%%%%%%% END CONTENT %%%%%%%%%%%%%%%%%%%%%
+
+
+    % show the references
+    %
+    \begin{frame}
+        \frametitle{References}
+        \printbibliography
+    \end{frame}
+
+\end{document}
