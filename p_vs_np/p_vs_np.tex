@@ -1,0 +1,105 @@
+\documentclass[t]{beamer}
+\usepackage{graphicx}
+\usepackage{hyperref} % hypertext link
+\usepackage{amsmath} % math symbols
+\usepackage{xcolor}
+
+% set the theme
+\usetheme{Boadilla}
+\usefonttheme{professionalfonts}
+\setbeamerfont{section in toc}{size=\normalsize}
+\setbeamerfont{subsection in toc}{size=\small}
+\setbeamerfont{section number projected}{size=\small}
+\setbeamerfont{subsection number projected}{size=\small}
+\setbeamerfont{footnote}{size=\tiny}
+
+
+% show the table of contents before each subsection
+% and highlight the current subsection
+%
+\AtBeginSubsection[]{
+  \begin{frame}
+    \frametitle{Overview}
+    \tableofcontents[currentsection, currentsubsection]
+  \end{frame}
+}
+
+\begin{document}
+
+    \author{Vincent Chan}
+    \title{CSE331: $\mathcal{P}\ \&\ \mathcal{NP}$}
+    \date{\today}
+
+
+    % show the title page
+    %
+    \begin{frame}
+        \titlepage
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%% BEGIN CONTENT %%%%%%%%%%%%%%%%%%%%%
+
+    \section{Problem Overview}
+        \begin{frame}
+            \frametitle{Problem Overview}
+            \begin{block}{So far what we have learned}
+                \begin{itemize}
+                    \item<1-> Can be solved in polynomial time
+                    \item<2-> polynomial time: $O(n^k)$ for some constant $k \geq 0$
+                \end{itemize}
+            \end{block}
+
+            \onslide<3-> \textbf{class $\mathcal{P}$}: Problems that can be answered in polynomial time.
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{New (?) Problem}
+            \onslide<1-> \textbf{class $\mathcal{NP}$}: Problems that given a solution, correctness can be \textit{determined} in polynomial time.\\
+            \onslide<2-> \textbf{determined}: Given a solution, check if it is correct $\leftarrow$ \textcolor{red}{Boolean output}.
+
+            \bigskip
+            \onslide<3-> \textbf{Is shortest path problem $\mathcal{NP}$?}\\
+            \onslide<4-> \textbf{Answer}: No, because the solution is not a Boolean output.
+
+            \bigskip
+            \onslide<5-> \textbf{Given a path $s \to t$, can we verify if it is the shortest path $s \to t$ in G?}\\
+            \onslide<6-> \textbf{Answer}: Yes.
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{New (!) Problem}
+            \onslide<1-> Hardest NP problems, all NP problems can be reduced to it.\\
+            \onslide<2-> \textbf{class $\mathcal{NP}-complete$}:
+            \begin{itemize}
+                \item<3-> is in $\mathcal{NP}$.
+                \item<4-> at least one problem in $\mathcal{NP}$-complete can be reduced to it.
+            \end{itemize}
+
+            \bigskip
+            \onslide<5-> \textbf{Easy to verify, hard to solve}: no polynomial time algorithm to solve it ($O(n!)$, $O(2^n)$, etc.)\\
+            \onslide<6-> \textbf{Example}: SAT problem (first NPC), Hamiltonian cycle/Traveling salesman problem (in sample midterm), dependency hell problem (package manager), etc.
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{Why we care about $\mathcal{NP}$?}
+            \onslide<1-> Recall $\mathcal{NP}$ problems are easy to verify, hard to solve.\\
+            \onslide<2-> $\mathcal{NP}$-complete problems are the hardest problems in $\mathcal{NP}$.\\
+
+            \bigskip
+            \onslide<3-> Cryptography 101: given a password, it is easy to verify if it is correct, but brute force to find the password is hard (RSA, ED25519).\\
+            \onslide<4-> If we can solve one $\mathcal{NP}$-complete problem in polynomial time, we can solve all $\mathcal{NP}$-complete problems in polynomial time.\\
+            \onslide<5-> If you forgot your password, the good news is that you can ask someone to find it in short time$\cdots$\\
+        \end{frame}
+
+        \begin{frame}
+            \frametitle{P, NP, NPC, NP-hard$\cdots$}
+            We believe that $\mathcal{P} \neq \mathcal{NP}$, but \textbf{not sure}.\\
+
+            \bigskip
+            \onslide<1-> \textbf{class $\mathcal{NP}-hard$}: Problems that are at least one problem in $\mathcal{NP}$-complete can be reduced to it, not necessarily in $\mathcal{NP}$.\\
+            \onslide<2-> \textbf{class Undecidable}: Problems that cannot be solved by any algorithm, e.g.halting problem.\\
+        \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%% END CONTENT %%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
