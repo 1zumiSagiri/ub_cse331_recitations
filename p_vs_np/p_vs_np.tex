@@ -103,18 +103,18 @@
     \section{Reduction}
         \begin{frame}
             \frametitle{Y $\leq_P$ X}
-            \onslide<1-> \textbf{Proof a problem Y is in $\mathcal{NP}$-complete}:\\
-            \onslide<2-> \textbf{Idea}: If we can solve problem X in $O(\mathcal{N})$, we can solve problem Y in $O(\mathcal{N})$.\\
-            \onslide<3-> \textbf{Reduction}: Given a problem Y, we can reduce it to another problem X.\\
+            \onslide<1-> \textbf{Proof a problem X is in $\mathcal{NP}$-complete}:\\
+            \onslide<2-> \textbf{Idea}: If we can solve problem Y in $O(\mathcal{N})$, we can solve problem X in $O(\mathcal{N})$.\\
+            \onslide<3-> \textbf{Reduction}: Given a problem X, we can reduce it to another known problem Y.\\
             \begin{itemize}
-                \item<4-> \textbf{Pre-process}: Given an instance of problem Y, we can transform it to an instance of problem X in polynomial time.
-                \item<5-> \textbf{Solve}: Given an instance of problem X, we can solve it in polynomial time.
-                \item<6-> \textbf{Post-process}: Given a solution of problem X, we can transform it to a solution of problem Y in polynomial time.
+                \item<4-> \textbf{Pre-process}: Given instances of problem X, we can transform it to instances of problem Y in polynomial time.
+                \item<5-> \textbf{Solve}: Given instances of problem Y, we can solve it in polynomial time.
+                \item<6-> \textbf{Post-process}: Given solutions of problem Y, we can transform it to solutions of problem X in polynomial time.
             \end{itemize}
             \bigskip
             \onslide<7-> In a vocal way, we can say that problem X is \textbf{at least as hard as} problem Y.\\
             \bigskip
-            \onslide<8-> If problem X is in $\mathcal{NP}$-complete, then problem Y is also in $\mathcal{NP}$-complete.\\
+            \onslide<8-> If problem Y is in $\mathcal{NP}$-complete, then problem X is also in $\mathcal{NP}$-complete.\\
         \end{frame}
 
     %%%%%%%%%%%%%%%%%%%%% END CONTENT %%%%%%%%%%%%%%%%%%%%%
